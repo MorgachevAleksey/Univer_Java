@@ -10,7 +10,7 @@ public class Car extends Vehicle{
     public Car(String model, String license, String color, int year, String ownerName, String insuranceNumber){
         super(model, license, color, year, ownerName, insuranceNumber);
         //Сеттером в конструкторе - так можно делать
-        //(второй вариант: как в предыдущей практики задать поле материнского класса protected и здесь присвоить значение напрямую)
+        //(второй вариант: как в предыдущей практике задать поле материнского класса protected и здесь присвоить значение напрямую)
         setEngineType("Combustion");
     }
 

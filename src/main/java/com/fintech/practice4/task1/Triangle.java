@@ -30,7 +30,17 @@ public class Triangle extends GeometricObject {
         this.side2 = 1.0;
         this.side3 = 1.0;
     }
+
+    //Конструктор с тремя сторонами по условию
     public Triangle(double side1, double side2, double side3) throws IllegalTriangleException {
+        this(side1, side2, side3, "белый", false);
+    }
+
+    //Вообще по хорошему - в задании сказано в одном месте что треугольник создается по трем сторонам, в другом месте что программа должна присваивать значение заливки и цвета - поэтому заливку и цвет я запихнул вматеринский конструктор, а здесь просто его вызов супером
+    //В итоге второй класс треугольника - это фактически первый с вызовом материнского конструктора
+    public Triangle(double side1, double side2, double side3, String color, boolean isFilled) throws IllegalTriangleException {
+        super(color, isFilled); //Если убрать эту строчку - получится нужный треугольник из первого задания
+
         if (side1 >= (side2 + side3) || side2 >= (side1 + side3) || side3 >= (side2 + side1)) {
             throw new IllegalTriangleException("Нарушено условие: сумма двух любых сторон треугольника больше третьей стороны");
         }
@@ -46,10 +56,12 @@ public class Triangle extends GeometricObject {
         double area = Math.sqrt(s * (s - side1) * (s - side2) * (s - side3));
         return area;
     }
+
     public double getPerimeter(){
         double s = (side1 + side2 + side3);
         return s;
     }
+
     @Override
     public String toString(){
         return "Треугольник: " + "\n" +
